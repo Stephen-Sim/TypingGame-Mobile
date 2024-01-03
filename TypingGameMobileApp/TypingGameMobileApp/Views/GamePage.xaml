@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:TypingGameMobileApp.ViewModels"
+             x:Class="TypingGameMobileApp.Views.GamePage" Title="Typing Game">
+
+    <ContentPage.BindingContext>
+        <viewmodels:GamePageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="-0.5"/>
+            <Setter Property="WidthRequest" Value="30"/>
+            <Setter Property="BorderColor" Value="Gray"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="-3"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="ImageButton">
+            <Setter Property="Margin" Value="-0.5"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Margin="5" BackgroundColor="White" HeightRequest="280" BorderColor="Black">
+                <StackLayout>
+                    <Label Text="{Binding CurrentWord}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="45" FontAttributes="Bold"/>
+
+                    <Grid VerticalOptions="End" RowDefinitions="*, *">
+                        <Label FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Word: "/>
+                                    <Span Text="{Binding TypeWordCount}"/>
+                                    <Span Text=" / "/>
+                                    <Span Text="{Binding TotalWordCount}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label FontSize="16" Grid.Row="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Time: "/>
+                                    <Span Text="{Binding TimeCount}"/>
+                                    <Span Text=" s"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Grid ColumnDefinitions="*, 50" Margin="5" RowDefinitions="60" IsEnabled="{Binding IsStarted}">
+                <Frame BackgroundColor="{Binding TypeSpaceColor}" BorderColor="Black" Padding="10" VerticalOptions="CenterAndExpand">
+                    <Label Text="{Binding TypedText}"/>
+                </Frame>
+
+                <Button Grid.Column="1" Text="🔁" HeightRequest="40" VerticalOptions="CenterAndExpand" Command="{Binding ReStartGameButtonClick}"/>
+            </Grid>
+
+            <StackLayout Grid.Row="2" VerticalOptions="Center" Margin="4" IsEnabled="{Binding IsStarted}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                    <Button Text="q" Command="{Binding KeyButtonClicked}" CommandParameter="q"/>
+                    <Button Text="w" Command="{Binding KeyButtonClicked}" CommandParameter="w"/>
+                    <Button Text="e" Command="{Binding KeyButtonClicked}" CommandParameter="e"/>
+                    <Button Text="r" Command="{Binding KeyButtonClicked}" CommandParameter="r"/>
+                    <Button Text="t" Command="{Binding KeyButtonClicked}" CommandParameter="t"/>
+                    <Button Text="y" Command="{Binding KeyButtonClicked}" CommandParameter="y"/>
+                    <Button Text="u" Command="{Binding KeyButtonClicked}" CommandParameter="u"/>
+                    <Button Text="i" Command="{Binding KeyButtonClicked}" CommandParameter="i"/>
+                    <Button Text="o" Command="{Binding KeyButtonClicked}" CommandParameter="o"/>
+                    <Button Text="p" Command="{Binding KeyButtonClicked}" CommandParameter="p"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                    <Button Text="a" Command="{Binding KeyButtonClicked}" CommandParameter="a"/>
+                    <Button Text="s" Command="{Binding KeyButtonClicked}" CommandParameter="s"/>
+                    <Button Text="d" Command="{Binding KeyButtonClicked}" CommandParameter="d"/>
+                    <Button Text="f" Command="{Binding KeyButtonClicked}" CommandParameter="f"/>
+                    <Button Text="g" Command="{Binding KeyButtonClicked}" CommandParameter="g"/>
+                    <Button Text="h" Command="{Binding KeyButtonClicked}" CommandParameter="h"/>
+                    <Button Text="j" Command="{Binding KeyButtonClicked}" CommandParameter="j"/>
+                    <Button Text="k" Command="{Binding KeyButtonClicked}" CommandParameter="k"/>
+                    <Button Text="l" Command="{Binding KeyButtonClicked}" CommandParameter="l"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                    <Button Text="z" Command="{Binding KeyButtonClicked}" CommandParameter="z"/>
+                    <Button Text="x" Command="{Binding KeyButtonClicked}" CommandParameter="x"/>
+                    <Button Text="c" Command="{Binding KeyButtonClicked}" CommandParameter="c"/>
+                    <Button Text="v" Command="{Binding KeyButtonClicked}" CommandParameter="v"/>
+                    <Button Text="b" Command="{Binding KeyButtonClicked}" CommandParameter="b"/>
+                    <Button Text="n" Command="{Binding KeyButtonClicked}" CommandParameter="n"/>
+                    <Button Text="m" Command="{Binding KeyButtonClicked}" CommandParameter="m"/>
+                    <Button Text="bs" WidthRequest="50" Command="{Binding KeyButtonClicked}" CommandParameter="backspace"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                    <Button WidthRequest="200" Text="______" FontSize="12" HeightRequest="40" CornerRadius="20" Command="{Binding KeyButtonClicked}" CommandParameter="space"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

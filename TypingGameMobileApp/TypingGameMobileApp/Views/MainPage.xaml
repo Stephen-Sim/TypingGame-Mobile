@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:TypingGameMobileApp.ViewModels"
+             x:Class="TypingGameMobileApp.Views.MainPage" Title="Typing Game">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="LightGreen"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="CornerRadius" Value="50"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="5" VerticalOptions="Center">
+            <Image Source="logo" WidthRequest="300"/>
+            <BoxView HeightRequest="50"/>
+            <Button Text="Start Game" Command="{Binding StartButtonClicked}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
